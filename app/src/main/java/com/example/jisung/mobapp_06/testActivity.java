@@ -38,6 +38,10 @@ public class testActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:114"));
             startActivity(intent);
         }
+        else if(v.getId()==R.id.b5){
+            Intent intent = new Intent(this,ListviewActivity.class);
+            startActivity(intent);
+        }
         else {
             Intent intent = new Intent(this, SecondActivity.class);
             intent.putExtra("msg", t1.getText().toString());

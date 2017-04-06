@@ -33,6 +33,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="전화걸기" />
+    <Button
+        android:onClick="BonClick"
+        android:id="@+id/b5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="리스트뷰" />
     <TextView
         android:id="@+id/t1"
         android:layout_width="match_parent"
