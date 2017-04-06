@@ -3,8 +3,7 @@ package com.example.jisung.mobapp_06;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.net.URL;
-import java.util.Date;
+
 
 /**
  * Created by jisung on 2017-04-06.
@@ -35,6 +34,21 @@ public class MetZip implements Parcelable{
         regitD = in.readString();
         catNum = in.readInt();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCatNum() {
+        return catNum;
+    }
+
+    @Override
+    public String toString() {
+        String str = this.name;
+        return str;
+    }
+
     public void setMetZip(String name, String number, String[] menu, String homepage, String regitD, int catNum) {
         this.name = name;
         this.number = number;
@@ -44,6 +58,27 @@ public class MetZip implements Parcelable{
         this.catNum = catNum;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public String getMenu(int i) {
+        if(i==0){
+            return this.menu[0];
+        }
+        else if(i==1)
+            return this.menu[1];
+        else
+            return this.menu[2];
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public String getRegitD() {
+        return regitD;
+    }
 
     public static final Creator<MetZip> CREATOR = new Creator<MetZip>() {
         @Override

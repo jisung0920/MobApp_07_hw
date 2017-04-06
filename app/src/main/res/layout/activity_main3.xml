@@ -11,7 +11,7 @@
     tools:context="com.example.jisung.mobapp_06.Main3Activity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="354dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:layout_span="2"
@@ -20,14 +20,16 @@
         android:padding="10dp"
         android:text="선택한 맛집 정보입니다."
         android:textColor="#fff7f7"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TableLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#ddfef8f8">
+        android:background="#ddfef8f8"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="28dp">
 
         <TableRow
             android:layout_marginTop="20dp"
@@ -144,7 +146,7 @@
                 app:srcCompat="@android:drawable/btn_star_big_on" />
         </TableRow>
 
-        <TableRow android:padding="10dp">
+        <TableRow android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -163,9 +165,12 @@
     </TableLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
 
         <Button
             android:id="@+id/btnback"

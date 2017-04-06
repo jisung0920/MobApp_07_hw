@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,26 +37,33 @@ public class Main2Activity extends AppCompatActivity {
         r1= (RadioButton)findViewById(R.id.radio1);
         r2= (RadioButton)findViewById(R.id.radio2);
         r3= (RadioButton)findViewById(R.id.radio3);
-        if(r1.isChecked())
-            catNum=1;
-        else if(r2.isChecked())
-            catNum=2;
-        else
-            catNum=3;
+
     }
 
     public void onClick(View v){
         if(v.getId()==R.id.btnAdd){
+            if(r1.isChecked())
+                catNum=1;
+            else if(r2.isChecked())
+                catNum=2;
+            else
+                catNum=3;
+
             String menu[] = {e3.getText().toString(),e4.getText().toString(),e5.getText().toString()};
             String time = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
                     .format(new Date(System.currentTimeMillis()));
 
-            data = new MetZip(e1.getText().toString(),e2.getText().toString(),
-                    menu,e6.getText().toString()
-                    ,time,catNum);
-            Intent intent = new Intent();
-            intent.putExtra("Mdata",data);
-            //리스트 추가 후 엑티비티 호출 후 종료
+            data = new MetZip(e1.getText().toString(),
+                    e2.getText().toString(),
+                    menu,e6.getText().toString(),
+                    time,catNum);
+
+            Intent intent = getIntent();
+            intent.putExtra("mdata",data);
+            setResult(RESULT_OK,intent);
+            //엑티비티 호출 후 종료
+            Toast.makeText(getApplicationContext(),"등록되었습니다.",Toast.LENGTH_SHORT).show();
+
             finish();
         }
         else{
