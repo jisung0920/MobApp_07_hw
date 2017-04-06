@@ -22,7 +22,9 @@
         <activity android:name=".testActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".ListviewActivity"></activity>
+        <activity android:name=".ListviewActivity" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".Main3Activity"></activity>
     </application>
 
 </manifest>
