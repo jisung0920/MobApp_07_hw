@@ -14,10 +14,11 @@ public class StartActivity extends AppCompatActivity {
     }
     public void S_onClick(View view){
         Intent intent;
-        if(view.getId()==R.id.s1)
-            intent = new Intent(StartActivity.this,testActivity.class);
+        if(view.getId()==R.id.s1) {
+            intent = new Intent(StartActivity.this, testActivity.class);
+        }
         else
-            intent = new Intent(StartActivity.this,fragActivity.class);
+            intent = new Intent(StartActivity.this,testActivity.class);
         startActivity(intent);
     }
 }
