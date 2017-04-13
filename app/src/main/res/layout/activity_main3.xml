@@ -20,12 +20,10 @@
         android:padding="10dp"
         android:text="선택한 맛집 정보입니다."
         android:textColor="#fff7f7"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        android:textSize="20dp" />
 
     <TableLayout
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ddfef8f8"
         tools:layout_editor_absoluteY="0dp"
