@@ -11,6 +11,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        setTitle("MobApp");
     }
     public void S_onClick(View view){
         Intent intent;

@@ -9,13 +9,14 @@ import android.os.Parcelable;
  * Created by jisung on 2017-04-06.
  */
 
-public class MetZip implements Parcelable{
+public class MetZip implements Parcelable {
     private String name;
     private String number;
     private String[] menu;
     private String homepage;
     private String regitD;
     private int catNum;
+    private Boolean checked=false;
 
     public MetZip(String name, String number, String[] menu, String homepage, String regitD, int catNum) {
         this.name = name;
@@ -57,6 +58,8 @@ public class MetZip implements Parcelable{
         this.regitD = regitD;
         this.catNum = catNum;
     }
+    public Boolean getChecked(){return checked;}
+    public void setChecked(Boolean check){this.checked=check;}
 
     public String getNumber() {
         return number;

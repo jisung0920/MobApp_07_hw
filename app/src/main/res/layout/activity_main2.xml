@@ -46,6 +46,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:inputType="text"
                 android:id="@+id/etname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,6 +136,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:inputType="text"
                 android:id="@+id/etmenu1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,6 +157,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:inputType="text"
                 android:id="@+id/etmenu2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,6 +178,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:inputType="text"
                 android:id="@+id/etmenu3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -195,6 +199,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:imeOptions="actionDone"
                 android:id="@+id/etaddr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

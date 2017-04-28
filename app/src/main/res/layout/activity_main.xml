@@ -49,6 +49,7 @@
         android:drawableLeft="@mipmap/ic_launcher"
         android:hint="검색할 맛집을 넣으세요"/>
     <ListView
+        android:textFilterEnabled="true"
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -34,24 +34,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String[] str = {"saer","Asersaer","aser"};
-        data.add(new MetZip("10","0104",str,"wrewer","werwer",6));
-        data.add(new MetZip("1","0104",str,"wrewer","werwer",4));
-        data.add(new MetZip("2","0104",str,"wrewer","werwer",5));
+        setTitle("MobApp");
+
         e1 = (EditText)findViewById(R.id.e1);
         Del = (Button)findViewById(R.id.b4);
         adapter = new MetAdapter(this,data);
         listView = (ListView)findViewById(R.id.listview);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this,Main3Activity.class);
-                intent.putExtra("mat",data.get(position));
-                startActivityForResult(intent,20);
-            }
-        });
-
         e1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String search = s.toString();
+
                 if(search.length() >0)
                     listView.setFilterText(search);//리스트 뷰 내에서 검색 - 데이터 상이 아니다.
                 else
@@ -73,6 +64,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this,Main3Activity.class);
+                intent.putExtra("mat",data.get(position));
+                startActivityForResult(intent,20);
+            }
+        });
+
+
 
 
     }
@@ -91,10 +93,27 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
         else{
-            if(Del.getText().toString().equals("선택"))
+            if(Del.getText().toString().equals("선택")) {
                 Del.setText("삭제");
-            else
+                adapter.checked=1;
+            }
+            else {
+                adapter.checked=0;
                 Del.setText("선택");
+                adapter.notifyDataSetChanged();
+
+                Boolean count=false;
+                for(int i=0;i<data.size();i++){
+                    if(data.get(i).getChecked()) {
+                        data.remove(i--);
+                        count=true;
+                    }
+                }
+                if(count)
+                    Toast.makeText(this, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
+            }
+            adapter.notifyDataSetChanged();
         }
 
     }
