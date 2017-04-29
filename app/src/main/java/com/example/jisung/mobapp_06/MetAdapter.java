@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,9 +22,12 @@ import java.util.Comparator;
  * Created by jisung on 2017-04-13.
  */
 
-public class MetAdapter extends BaseAdapter {
+public class MetAdapter extends BaseAdapter implements Filterable {
     ArrayList<MetZip> data = new ArrayList<MetZip>();
+    ArrayList<MetZip> filterItemList = data;
     Context context;
+    Filter listfilter;
+
     int checked = 0;
 
     public MetAdapter(Context context, ArrayList<MetZip> data) {
@@ -44,6 +49,8 @@ public class MetAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -116,5 +123,47 @@ public class MetAdapter extends BaseAdapter {
             Collections.sort(data, menuAsc);
             this.notifyDataSetChanged();
         }
+    }
+
+    private class ListFilter extends Filter{
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            if(constraint==null ||constraint.length()==0){
+                results.values=data;
+                results.count=data.size();
+            }
+            else {
+                ArrayList<MetZip> itemList = new ArrayList<MetZip>();
+                for(MetZip item : data){
+                    if(item.getName().toUpperCase().contains(constraint.toString().toUpperCase())){
+                        itemList.add(item);
+                    }
+                }
+                results.values=itemList;
+                results.count = itemList.size();
+
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            filterItemList = (ArrayList<MetZip>) results.values;
+            if(results.count>0)
+                notifyDataSetChanged();
+            else
+                notifyDataSetInvalidated();
+
+        }
+    }
+    @Override
+    public Filter getFilter() {
+        if(listfilter==null){
+            listfilter = new ListFilter();
+        }
+        return listfilter;
     }
 }

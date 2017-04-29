@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         Del = (Button)findViewById(R.id.b4);
         adapter = new MetAdapter(this,data);
         listView = (ListView)findViewById(R.id.listview);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setAdapter(adapter);
         e1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -56,11 +55,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String search = s.toString();
+                  if(search.length() >0) {
+                      ArrayList<MetZip> sea = new ArrayList<MetZip>();
+                      MetAdapter seaAdapter;
+                      for(int i=0;i<data.size();i++){
+                          if(data.get(i).getName().contains(search)){
+                              sea.add(data.get(i));
+                          }
+                      }
+                      seaAdapter = new MetAdapter(MainActivity.this,sea);
+                      listView.setAdapter(seaAdapter);
 
-                if(search.length() >0)
-                    listView.setFilterText(search);//리스트 뷰 내에서 검색 - 데이터 상이 아니다.
-                else
-                    listView.clearTextFilter();
+                      //listView.setFilterText(search);//리스트 뷰 내에서 검색 - 데이터 상이 아니다.
+                  }
+                  else {
+                      adapter =new MetAdapter(MainActivity.this,data);
+                      listView.setAdapter(adapter);
+
+                  }
+                   // listView.clearTextFilter();
 
             }
         });
