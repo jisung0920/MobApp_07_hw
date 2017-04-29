@@ -72,7 +72,10 @@ public class MetAdapter extends BaseAdapter implements Filterable {
         c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                one.setChecked(true);
+                if(isChecked)
+                    one.setChecked(true);
+                else
+                    one.setChecked(false);
             }
         });
 
